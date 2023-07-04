@@ -33,7 +33,7 @@
     </section>
     <!-- header section ends -->
 
-    <div class="heading" style="background:url(images/header-bg-3.jpg) no-repeat">
+    <div class="heading" style="background:url(images/header-bg-2.jpg) no-repeat">
         <h1>book now</h1>
     </div>
 
@@ -112,7 +112,7 @@
                 <h3>contact info</h3>
                 <a href="#"> <i class="fas fa-phone"></i> +123-456-7890</a>
                 <a href="#"> <i class="fas fa-phone"></i> +111-222-3333</a>
-                <a href="#"> <i class="fas fa-envelope"></i> daothang@gmail.com</a>
+                <a href="#"> <i class="fas fa-envelope"></i> tung.nguyen.mauxox@gmail.com</a>
                 <a href="#"> <i class="fas fa-map"></i> Q12, TP HCM</a>
             </div>
 

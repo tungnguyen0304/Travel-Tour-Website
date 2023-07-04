@@ -671,6 +671,10 @@ nền của trường đó sẽ chuyển thành màu đen (var(--black)) và mà
 }
 
 @media (max-width:768px) {
+    .heading h1 {
+        font-size: 4rem;
+    }
+
     #menu-btn {
         /* một phần tử sẽ hiển thị dưới dạng một khối nội tuyến (inline-block). 
         Điều này có nghĩa là phần tử sẽ được đặt trên cùng một dòng với các phần tử xung quanh nó (giống như các phần tử nội tuyến), 
