@@ -1,0 +1,732 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+    --main-color: #8e44ad;
+    --black: #222;
+    --white: #fff;
+    --light-black: #777;
+    --light-white: #fff9;
+    --dark-bg: rgba(0, 0, 0, .7);
+    --light-bg: #eee;
+    --border: .1rem solid var(--black);
+
+    /* offset-x | offset-y | blur-radius | spread-radius | color  */
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    --text-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .3);
+    /* 1 rem = 16px */
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* box-sizing: border-box; là một thuộc tính CSS cho phép chúng ta bao gồm
+    đệm (padding) và viền (border) trong chiều rộng và chiều cao tổng cộng của một phần tử.
+    Nếu bạn thiết lập box-sizing: border-box; cho một phần tử, đệm và viền sẽ được tính 
+    vào chiều rộng và chiều cao của phần tử, thay vì được thêm vào bên ngoài như mặc định.*/
+    box-sizing: border-box;
+
+    /* outline: none;: Thuộc tính này loại bỏ đường viền ngoài (outline) xung quanh phần tử. */
+    outline: none;
+
+    /* border: none;: Thuộc tính này loại bỏ đường viền (border) xung quanh phần tử. */
+    border: none;
+
+    /* text-decoration: none;: Thuộc tính này loại bỏ trang trí văn bản, chẳng hạn như gạch chân hoặc gạch ngang. */
+    text-decoration: none;
+
+    /* text-transform: capitalize;: Thuộc tính này biến đổi chữ cái đầu tiên của mỗi từ trong văn bản thành chữ hoa. */
+    text-transform: capitalize;
+}
+
+html {
+    font-size: 62.5%;
+    /* Thuộc tính overflow-x trong CSS định nghĩa cách hiển thị khi nội dung vượt quá cạnh trái và phải của một phần tử cấp khối. 
+    Điều này có thể là không có gì, một thanh cuộn hoặc nội dung tràn. 
+    Khi overflow-x được đặt thành hidden, điều đó có nghĩa là nội dung tràn sẽ bị cắt bớt nếu cần thiết để phù hợp 
+    theo chiều ngang trong hộp đệm của phần tử và không có thanh cuộn được cung cấp. */
+    overflow-x: hidden;
+}
+
+/* thanh cuộn (scrollbar) trong trình duyệt Webkit (như Chrome và Safari) sẽ có chiều rộng bằng 1rem. */
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* màu nền của phần track (phần bên trong của thanh cuộn) là màu trắng (--white) */
+html::-webkit-scrollbar-track {
+    background-color: var(--white);
+}
+
+/* màu nền của phần thumb (phần di chuyển trên thanh cuộn) là màu chính (--main-color) */
+html::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+section {
+    padding: 5rem 10%
+}
+
+@keyframes fadeIn {
+
+    /* Animation này có một keyframe ở 0% thời gian chạy animation */
+    0% {
+        /* phần tử sẽ được thu nhỏ về kích thước 0 */
+        transform: scale(0);
+        /* sẽ không có độ trong suốt */
+        opacity: 0;
+    }
+}
+
+.heading {
+    background-size: cover !important;
+    background-position: center !important;
+    padding-top: 10rem;
+    padding-bottom: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading h1 {
+    font-size: 10rem;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: var(--text-shadow);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--black);
+    margin-top: 1rem;
+    color: var(--white);
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--main-color);
+}
+
+.heading-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.header {
+    /* Phần tử sẽ dính vào vị trí cố định khi cuộn trang. */
+    position: sticky;
+    /* Phần tử sẽ dính vào đỉnh và hai cạnh bên của trang. */
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Phần tử sẽ nằm trên các phần tử khác có chỉ số z-index thấp hơn. */
+    z-index: 1000;
+    background-color: var(--white);
+    /* Phần tử sẽ hiển thị dưới dạng flexbox. */
+    /* CSS flexbox là một one-dimensional(hay còn gọi là 1D) layout pattern */
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    /* Phần tử sẽ có hiệu ứng bóng (box-shadow) */
+    box-shadow: var(--box-shadow);
+    /* Các mục con trong phần tử sẽ được căn giữa theo chiều dọc. */
+    align-items: center;
+    /* Các mục con trong phần tử sẽ được phân bổ đều với khoảng cách giữa chúng bằng nhau.
+    Ở đây là 2 phần: logo và navbar*/
+    justify-content: space-between;
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.header .navbar a {
+    font-size: 2rem;
+    margin-left: 2rem;
+    color: var(--black);
+}
+
+.header .navbar a:hover {
+    color: var(--main-color);
+}
+
+#menu-btn {
+    font-size: 2.5rem;
+    /* khi di chuột qua phần tử, con trỏ chuột sẽ thay đổi thành hình dạng của một tay chỉ (pointer), 
+    thường được sử dụng để chỉ ra rằng phần tử là có thể nhấp chuột. */
+    cursor: pointer;
+    color: var(--black);
+    display: none;
+}
+
+.home {
+    padding: 0;
+}
+
+.home .slide {
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    /* align-items: theo chiều dọc
+       justify-content: theo chiều ngang
+       Cả 2 dùng khi có display: flex | grid */
+    align-items: center;
+    justify-content: center;
+    /* !important được sử dụng để đảm bảo rằng giá trị này sẽ được ưu tiên hơn các giá trị khác cho thuộc tính background-size */
+    background-size: cover !important;
+    background-position: center !important;
+    min-height: 60rem;
+}
+
+.home .slide .content {
+    width: 85rem;
+    display: none;
+}
+
+.home .swiper-slide-active .content {
+    display: inline-block;
+}
+
+.home .slide .content span {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--light-white);
+    padding-bottom: 1rem;
+    animation: fadeIn .3s linear backwards .2s;
+}
+
+.home .slide .content h3 {
+    font-size: 7vw;
+    color: var(--white);
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: var(--text-shadow);
+    padding: 1rem 0;
+    animation: fadeIn .3s linear backwards .4s;
+
+}
+
+.home .slide .content .btn {
+    animation: fadeIn .3s linear backwards .6s;
+}
+
+.home .swiper-button-next,
+.home .swiper-button-prev {
+    top: inherit;
+    left: inherit;
+    bottom: 0;
+    right: 0;
+    height: 7rem;
+    width: 7rem;
+    background: var(--white);
+    color: var(--black);
+}
+
+.home .swiper-button-next:hover,
+.home .swiper-button-prev:hover {
+    background: var(--main-color);
+    color: var(--white);
+}
+
+.home .swiper-button-next::after,
+.home .swiper-button-prev::after {
+    font-size: 2rem;
+}
+
+.home .swiper-button-prev {
+    right: 7rem;
+}
+
+.services .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+}
+
+.services .box-container .box {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+.services .box-container .box:hover {
+    background: var(--light-black);
+}
+
+.services .box-container .box img {
+    height: 7rem;
+}
+
+.services .box-container .box h3 {
+    color: var(--white);
+    font-size: 1.7rem;
+    padding-top: 1rem;
+}
+
+.home-about {
+    display: flex;
+    align-items: center;
+    /* khi các phần tử con của phần tử này không đủ chỗ để hiển thị trên một dòng, chúng sẽ được chuyển xuống dòng mới. */
+    flex-wrap: wrap;
+}
+
+.home-about .image {
+    /* phần tử này sẽ được phóng to hoặc thu nhỏ để chiếm đủ không gian còn lại trong container của nó và kích thước tối thiểu của nó sẽ là 41rem */
+    flex: 1 1 41rem;
+}
+
+.home-about .image img {
+    /* chiều rộng bằng 100% chiều rộng của phần tử cha. */
+    width: 100%;
+}
+
+.home-about .content {
+    flex: 1 1 41rem;
+    padding: 3rem;
+    background: var(--light-bg);
+}
+
+.home-about .content h3 {
+    font-size: 3rem;
+    color: var(--black);
+}
+
+.home-about .content p {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    line-height: 2;
+    color: var(--black);
+}
+
+.home-packages {
+    background: var(--light-bg);
+}
+
+.home-packages .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.home-packages .box-container .box {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background: var(--white);
+}
+
+.home-packages .box-container .box .image {
+    height: 25rem;
+    /* nội dung của phần tử này vượt quá kích thước của nó, nó sẽ bị ẩn đi và không hiển thị ra ngoài */
+    overflow: hidden;
+}
+
+.home-packages .box-container .box .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .2s linear;
+}
+
+.home-packages .box-container .box .content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.home-packages .box-container .box .content h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.home-packages .box-container .box .content p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.home-packages .load-more {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.home-offer {
+    text-align: center;
+}
+
+.home-offer .content {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.home-offer .content h3 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.home-offer .content p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.about .image {
+    flex: 1 1 41rem;
+}
+
+.about .image img {
+    width: 100%;
+}
+
+.about .content {
+    flex: 1 1 41rem;
+    text-align: center;
+}
+
+.about .content h3 {
+    font-size: 3rem;
+    color: var(--black);
+}
+
+.about .content p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.about .content .icons-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    /* các phần tử con của phần tử này sẽ được căn lề dưới cùng theo trục dọc */
+    align-items: flex-end;
+}
+
+.about .content .icons-container .icons {
+    background: var(--light-bg);
+    padding: 2rem;
+    flex: 1 1 16rem;
+}
+
+.about .content .icons-container .icons i {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+}
+
+.about .content .icons-container .icons span {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    display: block;
+}
+
+.reviews {
+    background: var(--light-bg);
+}
+
+.reviews .slide {
+    padding: 2rem;
+    border: var(--border);
+    background: var(--white);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    /* người dùng sẽ không thể chọn văn bản hoặc nội dung của phần tử này */
+    user-select: none;
+}
+
+.reviews .slide .stars {
+    padding-bottom: .5rem;
+}
+
+.reviews .slide .stars i {
+    font-size: 1.7rem;
+    color: var(--main-color);
+}
+
+.reviews .slide p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.reviews .slide h3 {
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.reviews .slide span {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    display: block;
+}
+
+.reviews .slide img {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    margin-top: 1rem;
+}
+
+.packages .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.packages .box-container .box {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background: var(--white);
+    display: none;
+}
+
+.packages .box-container .box:nth-child(1),
+.packages .box-container .box:nth-child(2),
+.packages .box-container .box:nth-child(3),
+.packages .box-container .box:nth-child(4),
+.packages .box-container .box:nth-child(5),
+.packages .box-container .box:nth-child(6) {
+    display: inline-block;
+}
+
+.packages .box-container .box .image {
+    height: 25rem;
+    /* nội dung của phần tử này vượt quá kích thước của nó, nó sẽ bị ẩn đi và không hiển thị ra ngoài */
+    overflow: hidden;
+}
+
+.packages .box-container .box .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .2s linear;
+}
+
+.packages .box-container .box .content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.packages .box-container .box .content h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.packages .box-container .box .content p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.packages .load-more {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.booking .book-form {
+    padding: 2rem;
+    background: var(--light-bg)
+}
+
+.booking .book-form .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.booking .book-form .flex .inputBox {
+    flex: 1 1 41rem;
+}
+
+.booking .book-form .flex .inputBox input {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.6rem;
+    color: var(--light-black);
+    text-transform: none;
+    margin-top: 1.5rem;
+    border: var(--border);
+}
+
+/* :focus là một pseudo-class được sử dụng để chọn phần tử đang được focus. 
+Khi một phần tử được focus, nó có thể nhận các sự kiện bàn phím hoặc các sự kiện khác. 
+Ví dụ, khi người dùng nhấp vào một trường nhập liệu (input field), trường đó sẽ được focus và có thể nhận các sự kiện bàn phím. */
+/* Điều này có nghĩa là khi người dùng nhấp vào một trường nhập liệu trong form đặt chỗ (booking form), 
+nền của trường đó sẽ chuyển thành màu đen (var(--black)) và màu chữ sẽ chuyển thành màu trắng (var(--white)). */
+.booking .book-form .flex .inputBox input:focus {
+    background: var(--black);
+    color: var(--white);
+}
+
+.booking .book-form .flex .inputBox input:focus::placeholder {
+    color: var(--light-white);
+}
+
+.booking .book-form .flex .inputBox span {
+    font-size: 2rem;
+    color: var(--light-black);
+}
+
+.booking .book-form .btn {
+    margin-top: 2rem;
+}
+
+.footer {
+    /* có một thuộc tính background được định nghĩa với giá trị là một URL đến một hình ảnh và không lặp lại hình ảnh đó. */
+    background: url(images/footer-bg.jpg) no-repeat;
+    /* hình ảnh nền sẽ được phóng to hoặc thu nhỏ để che phủ toàn bộ khu vực nền của phần tử. */
+    background-size: cover;
+    /* hình ảnh nền sẽ được căn giữa trong khu vực nền của phần tử. */
+    background-position: center;
+}
+
+.footer .box-container {
+    /* hiển thị dưới dạng lưới. */
+    display: grid;
+    /* định nghĩa cấu trúc cột cho lưới bằng cách sử dụng hàm repeat và minmax. 
+    Hàm repeat sẽ tạo ra nhiều cột với kích thước được xác định bởi hàm minmax. 
+    Hàm minmax sẽ đảm bảo rằng kích thước của mỗi cột sẽ không nhỏ hơn 25rem và không lớn hơn 1 phần tử linh hoạt (1fr). */
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    /* khoảng cách giữa các hàng và cột trong lưới thành 3rem. */
+    gap: 3rem;
+}
+
+.footer .box-container .box h3 {
+    color: var(--white);
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+}
+
+.footer .box-container .box a {
+    color: var(--light-white);
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: block;
+}
+
+.footer .box-container .box a i {
+    color: var(--main-color);
+    padding-right: .5rem;
+    transition: .2s linear;
+}
+
+.footer .box-container .box a:hover i {
+    padding-right: 2rem;
+}
+
+.footer .credit {
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: .1px solid var(--light-white);
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.footer .credit span {
+    color: var(--main-color);
+}
+
+
+
+/* media queries */
+@media (max-width:1200px) {
+    section {
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 3rem 2rem;
+    }
+
+    .home .slide .content h3 {
+        font-size: 10vw;
+    }
+}
+
+@media (max-width:768px) {
+    #menu-btn {
+        /* một phần tử sẽ hiển thị dưới dạng một khối nội tuyến (inline-block). 
+        Điều này có nghĩa là phần tử sẽ được đặt trên cùng một dòng với các phần tử xung quanh nó (giống như các phần tử nội tuyến), 
+        nhưng vẫn có thể định nghĩa chiều rộng và chiều cao (giống như các phần tử khối). */
+        display: inline-block;
+        /* khi một thuộc tính nào đó của phần tử thay đổi, thay đổi đó sẽ diễn ra trong suốt 0.2 giây với tốc độ thay đổi đều (linear). 
+        Điều này giúp tạo ra hiệu ứng chuyển động mượt mà khi thay đổi thuộc tính của phần tử. */
+        transition: .2s linear;
+    }
+
+    #menu-btn.fa-times {
+        /* sẽ được xoay 180 độ xung quanh trục Z (trục đi qua màn hình) khi thuộc tính transform được áp dụng. 
+        Điều này có thể tạo ra hiệu ứng xoay phần tử khi kích hoạt. */
+        transform: rotate(180deg);
+    }
+
+    .header .navbar {
+        /* có nghĩa là nó sẽ được định vị tuyệt đối so với phần tử cha gần nhất có thuộc tính position được định nghĩa. */
+        position: absolute;
+        /* có nghĩa là nó sẽ được định vị ở phía dưới cùng của phần tử cha. */
+        top: 99%;
+        /* có nghĩa là nó sẽ được căn lề trái với phần tử cha. */
+        left: 0;
+        /* có nghĩa là nó sẽ được căn lề phải với phần tử cha. */
+        right: 0;
+        background-color: var(--white);
+        /* Dòng này đặt đường viền trên của phần tử navbar bằng cách sử dụng biến CSS --border. */
+        border-top: var(--border);
+        /* Dòng này đặt lề trong của phần tử navbar thành 2rem. */
+        padding: 2rem;
+        /* định nghĩa hiệu ứng chuyển đổi cho các thuộc tính thay đổi của phần tử navbar. 
+        Hiệu ứng chuyển đổi sẽ diễn ra trong .2 giây và sử dụng hàm chuyển đổi tuyến tính. */
+        transition: .2s linear;
+        /* để tạo hình dạng cho phần tử. */
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navbar a {
+        /* chúng sẽ được hiển thị dưới dạng khối */
+        /* block: Hiển thị phần tử dưới dạng phần tử khối (như thẻ <p>). Nó bắt đầu trên một dòng mới và chiếm toàn bộ chiều rộng. */
+        display: block;
+        margin: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+
+    .heading-title {
+        font-size: 3.5rem;
+    }
+}
