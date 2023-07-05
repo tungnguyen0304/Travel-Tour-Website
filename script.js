@@ -56,11 +56,14 @@ var swiper = new Swiper(".reviews-sliders", {
 
 // chọn phần tử có class là btn nằm trong phần tử có class là load-more, nằm trong phần tử có class là packages
 let loadMoreBtn = document.querySelector(".packages .load-more .btn");
-let currentItem = 3;
+let seeLessBtn = document.querySelector(".packages .see-less .btn");
+let currentItem = 6;
 
-// gán một hàm ẩn danh cho sự kiện onclick của phần tử được lưu trữ trong biến loadMoreBtn. Điều này có nghĩa là khi người dùng nhấp vào phần tử này, hàm ẩn danh sẽ được thực thi.
+// gán một hàm ẩn danh cho sự kiện onclick của phần tử được lưu trữ trong biến loadMoreBtn.
+// Điều này có nghĩa là khi người dùng nhấp vào phần tử này, hàm ẩn danh sẽ được thực thi.
 loadMoreBtn.onclick = () => {
-  //  Dòng này khai báo một biến boxes và gán giá trị cho nó bằng một mảng các phần tử được trả về từ phương thức querySelectorAll với đối số là chuỗi CSS selector .packages .box-container .box
+  // Dòng này khai báo một biến boxes và gán giá trị cho nó bằng một mảng các phần tử
+  // được trả về từ phương thức querySelectorAll với đối số là chuỗi CSS selector .packages .box-container .box
   // Điều này có nghĩa là chọn tất cả các phần tử có class là box nằm trong phần tử có class là box-container, nằm trong phần tử có class là packages.
   let boxes = [...document.querySelectorAll(".packages .box-container .box")];
   for (var i = currentItem; i < currentItem + 3; i++) {
@@ -69,5 +72,18 @@ loadMoreBtn.onclick = () => {
   currentItem += 3;
   if (currentItem >= boxes.length) {
     loadMoreBtn.style.display = "none";
+    seeLessBtn.style.display = "inline-block";
+  }
+};
+
+seeLessBtn.onclick = () => {
+  let boxes = [...document.querySelectorAll(".packages .box-container .box")];
+  for (var i = currentItem - 1; i > currentItem - 4; i--) {
+    boxes[i].style.display = "none";
+  }
+  currentItem -= 3;
+  if (currentItem <= 6) {
+    seeLessBtn.style.display = "none";
+    loadMoreBtn.style.display = "inline-block";
   }
 };

@@ -543,6 +543,15 @@ section {
     margin-top: 2rem;
 }
 
+.packages .see-less {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.packages .see-less .btn {
+    display: none;
+}
+
 .booking .book-form {
     padding: 2rem;
     background: var(--light-bg)

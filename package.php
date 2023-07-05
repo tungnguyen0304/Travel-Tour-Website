@@ -180,6 +180,7 @@
         </div>
 
         <div class="load-more"><span class="btn">load more</span></div>
+        <div class="see-less"><span class="btn">see less</span></div>
 
     </section>
 
